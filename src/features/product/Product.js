@@ -81,15 +81,15 @@ const Product = () => {
   });
 
   return (
-    <div className="w-full h-full flex gap-16 justify-center items-center p-[60px]">
+    <div className="w-full h-full flex gap-16 justify-center items-center px-[80px] py-[60px]">
       <div className="flex flex-col gap-4">
         <div>{productImage}</div>
         {imageTabs}
       </div>
-      <div>
+      <div className="max-w-xs">
         {productDescription}
-        <div className="flex">
-          <div className="flex w-[35%] justify-center">
+        <div className="flex gap-4">
+          <div className="flex justify-between w-[35%] bg-slate-50 rounded-md py-2 px-4">
             <button>
               <img src={Minus} alt="minus" />
             </button>
@@ -98,8 +98,8 @@ const Product = () => {
               <img src={Plus} alt="plus" />
             </button>
           </div>
-          <div className="flex justify-center gap-2 text-white w-[65%]">
-            <img className="text-sm" src={Cart} alt="cart" />
+          <div className="flex p-2 justify-center gap-2 text-white w-[65%] bg-orange-500 rounded-md cursor-pointer">
+            <img src={Cart} alt="cart" />
             <div>Add to cart</div>
           </div>
         </div>
