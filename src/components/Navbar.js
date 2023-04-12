@@ -4,18 +4,25 @@ import Cart from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
 import Menu from "../images/icon-menu.svg";
 import Close from "../images/icon-close.svg";
+import { useDispatch } from "react-redux"
+import { setCart } from "../features/cartSlice";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const dispatch = useDispatch()
 
   const handleClick = () => {
     setNav((prev) => !prev);
   };
 
+  const handleCart = () => {
+    dispatch(setCart())
+  }
+
   return (
     <div>
-      <div className=" justify-between items-center hidden py-6 px-44 border-b border lg:flex">
-        <div className="flex items-center justify-between w-[50%] ">
+      <div className=" justify-between items-center hidden py-6 border-b lg:flex">
+        <div className="flex items-center justify-between w-[55%] ">
           <div className="">
             <img src={Logo} alt="logo" />
           </div>
@@ -30,7 +37,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className="flex items-center gap-8 md:gap-4">
-          <div className="cursor-pointer">
+          <div className="cursor-pointer" onClick={handleCart}>
             <img src={Cart} alt="cart" />
           </div>
           <div className="w-12 h-12">
@@ -39,7 +46,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="top-0 w-full flex justify-between py-6 px-4 border-b md:flex">
+      <div className="top-0 w-full flex justify-between py-6 px-4 border-b md:flex lg:hidden">
         <div className="flex items-center gap-3">
           <div className="cursor-pointer" onClick={handleClick}>
             <img src={Menu} alt="menu" />
@@ -47,7 +54,7 @@ const Navbar = () => {
           <img src={Logo} alt="logo" />
         </div>
         <div className="flex items-center gap-4">
-          <img className="cursor-pointer" src={Cart} alt="cart" />
+          <img className="cursor-pointer" onClick={handleCart} src={Cart} alt="cart" />
           <div className="w-6 h-6">
             <img src={Avatar} alt="avatar" />
           </div>
@@ -57,7 +64,7 @@ const Navbar = () => {
       <div
         className={
           !nav
-            ? "h-[100%] fixed top-0 left-0 w-full flex bg-[rgba(0,0,0,0.71)] ease-out duration-500"
+            ? "h-[100%] fixed top-0 left-0 w-full flex bg-[rgba(0,0,0,0.71)] ease-out duration-500 md:hidden"
             : "fixed left-[-100%]"
         }
       >

@@ -1,11 +1,12 @@
 import Navbar from "./components/Navbar";
+import Product from "./features/product/Product";
 
 
 function App() {
   return (
-    <div className="App">
-      <Navbar/>
-      Hello world
+    <div className="px-44">
+      <Navbar />
+      <Product />
     </div>
   );
 }
