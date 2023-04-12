@@ -31,21 +31,6 @@ const Product = () => {
     );
   });
 
-  const productDescription = allProduct.map((item) => {
-    return (
-      <div className="flex flex-col">
-        <div>{item.company}</div>
-        <div>{item.title}</div>
-        <div>{item.description}</div>
-        <div className="flex">
-          <div>{item.price}</div>
-          {item.discount}
-        </div>
-        <div>{item.initPrice}</div>
-      </div>
-    );
-  });
-
   const imageTabs = allProduct.map((item) => {
     return (
       <div className="w-[320px] h-auto flex justify-between">
@@ -79,6 +64,23 @@ const Product = () => {
       </div>
     );
   });
+    
+  const productDescription = allProduct.map((item) => {
+    return (
+      <div className="flex flex-col pb-8">
+        <div className="uppercase text-orange-600 text-xs py-2">
+          {item.company}
+        </div>
+        <div className="capitalize text-2xl pb-5 font-bold">{item.title}</div>
+        <div className="text-sm pb-3">{item.description}</div>
+        <div className="flex gap-5 items-center">
+          <div className="font-bold text-lg">{item.price}</div>
+          <div className="text-orange-600 rounded-md font-bold text-xs bg-orange-200 p-[3px]">{item.discount}</div>
+        </div>
+        <div className="opacity-30 font-bold">{item.initPrice}</div>
+      </div>
+    );
+  });
 
   return (
     <div className="w-full h-full flex gap-16 justify-center items-center px-[80px] py-[60px]">
@@ -86,7 +88,7 @@ const Product = () => {
         <div>{productImage}</div>
         {imageTabs}
       </div>
-      <div className="max-w-xs">
+      <div className="max-w-sm">
         {productDescription}
         <div className="flex gap-4">
           <div className="flex justify-between w-[35%] bg-slate-50 rounded-md py-2 px-4">
@@ -99,7 +101,7 @@ const Product = () => {
             </button>
           </div>
           <div className="flex p-2 justify-center gap-2 text-white w-[65%] bg-orange-500 rounded-md cursor-pointer">
-            <img src={Cart} alt="cart" />
+            <img className="w-5 h-5" src={Cart} alt="cart" />
             <div>Add to cart</div>
           </div>
         </div>

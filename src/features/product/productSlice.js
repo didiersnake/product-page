@@ -4,12 +4,12 @@ const initialState = [
   {
     images:[ "image-product-1","image-product-2","image-product-3","image-product-4"],
     company: "sneaker company",
-    title: "fall limited company edition",
+    title: "fall limited company edition sneaker",
     description:
       "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer",
-    price: "$125",
+    price: "$125.00",
     discount: "50%",
-    initPrice: "$250",
+    initPrice: "$250.00",
     
   },
 ];
