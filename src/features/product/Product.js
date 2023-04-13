@@ -1,30 +1,29 @@
 import React, { useState } from "react";
 import { product } from "./productSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { addCount,subCount } from "./productSlice";
+import { addCount, subCount } from "./productSlice";
 import Plus from "../../images/icon-plus.svg";
 import Minus from "../../images/icon-minus.svg";
 import Cart from "../../images/icon-cart.svg";
 
 const Product = () => {
   const [tab, setTab] = useState(1);
-  const [cart, setCart] = useState(0)
   const allProduct = useSelector(product);
-  const productId = allProduct.map((item)=> item.id)
-  const [id, setId] = useState(...productId)
-  
-    const dispatch = useDispatch();
+  const productId = allProduct.map((item) => item.id);
+  const [id, setId] = useState(...productId);
+
+  const dispatch = useDispatch();
 
   const imgSwitch = (index) => {
     return setTab(index + 1);
   };
-  
-  const addProductCount = ()=> {
-    dispatch(addCount({id: id }))
-  }
-  const subProductCount = ()=> {
-    dispatch(subCount({id: id }))
-  }
+
+  const addProductCount = () => {
+    dispatch(addCount({ id: id }));
+  };
+  const subProductCount = () => {
+    dispatch(subCount({ id: id }));
+  };
 
   const productImage = allProduct.map((item) => {
     return (
@@ -77,7 +76,7 @@ const Product = () => {
       </div>
     );
   });
-    
+
   const productDescription = allProduct.map((item) => {
     return (
       <div className="flex flex-col pb-8">
@@ -88,7 +87,9 @@ const Product = () => {
         <div className="text-sm pb-3">{item.description}</div>
         <div className="flex gap-5 items-center">
           <div className="font-bold text-lg">{item.price}</div>
-          <div className="text-orange-600 rounded-md font-bold text-xs bg-orange-200 p-[3px]">{item.discount}</div>
+          <div className="text-orange-600 rounded-md font-bold text-xs bg-orange-200 p-[3px]">
+            {item.discount}
+          </div>
         </div>
         <div className="opacity-30 font-bold">{item.initPrice}</div>
       </div>
@@ -108,9 +109,11 @@ const Product = () => {
             <button onClick={subProductCount}>
               <img src={Minus} alt="minus" />
             </button>
-            <div>{allProduct.map((item)=>{
-                return item.count
-            })}</div>
+            <div>
+              {allProduct.map((item) => {
+                return item.count;
+              })}
+            </div>
             <button onClick={addProductCount}>
               <img src={Plus} alt="plus" />
             </button>

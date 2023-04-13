@@ -28,6 +28,9 @@ const productSlice = createSlice({
   name: "product",
   reducers: {
     addCount(state, action) {
+      //get item
+      //filter out 
+      //return updated cartcount and product count
       const { id } = action.payload;
       const item = state.products.find((item) => item.id === id);
       const products = state.products.filter((item) => item.id !== id);
@@ -50,4 +53,5 @@ const productSlice = createSlice({
 
 export const { addCount, subCount } = productSlice.actions;
 export const product = (state) => state.product.products;
+export const count = (state) => state.product.cartCount
 export default productSlice.reducer;
