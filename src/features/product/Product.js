@@ -1,17 +1,30 @@
 import React, { useState } from "react";
 import { product } from "./productSlice";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addCount,subCount } from "./productSlice";
 import Plus from "../../images/icon-plus.svg";
 import Minus from "../../images/icon-minus.svg";
 import Cart from "../../images/icon-cart.svg";
 
 const Product = () => {
   const [tab, setTab] = useState(1);
+  const [cart, setCart] = useState(0)
   const allProduct = useSelector(product);
+  const productId = allProduct.map((item)=> item.id)
+  const [id, setId] = useState(...productId)
+  
+    const dispatch = useDispatch();
 
   const imgSwitch = (index) => {
     return setTab(index + 1);
   };
+  
+  const addProductCount = ()=> {
+    dispatch(addCount({id: id }))
+  }
+  const subProductCount = ()=> {
+    dispatch(subCount({id: id }))
+  }
 
   const productImage = allProduct.map((item) => {
     return (
@@ -68,7 +81,7 @@ const Product = () => {
   const productDescription = allProduct.map((item) => {
     return (
       <div className="flex flex-col pb-8">
-        <div className="uppercase text-orange-600 text-xs py-2">
+        <div className="uppercase text-orange-600 text-xs font-semibold py-2">
           {item.company}
         </div>
         <div className="capitalize text-2xl pb-5 font-bold">{item.title}</div>
@@ -92,11 +105,13 @@ const Product = () => {
         {productDescription}
         <div className="flex gap-4">
           <div className="flex justify-between w-[35%] bg-slate-50 rounded-md py-2 px-4">
-            <button>
+            <button onClick={subProductCount}>
               <img src={Minus} alt="minus" />
             </button>
-            <div>0</div>
-            <button>
+            <div>{allProduct.map((item)=>{
+                return item.count
+            })}</div>
+            <button onClick={addProductCount}>
               <img src={Plus} alt="plus" />
             </button>
           </div>

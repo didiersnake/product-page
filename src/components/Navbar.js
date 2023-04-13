@@ -27,7 +27,7 @@ const Navbar = () => {
             <img src={Logo} alt="logo" />
           </div>
           <div>
-            <ul className="flex items-center justify-around">
+            <ul className="flex items-center justify-around text-sm">
               <li className="p-2">Collections</li>
               <li className="p-2">Men</li>
               <li className="p-2">Women</li>
@@ -46,7 +46,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className="top-0 w-full flex justify-between py-6 px-4 border-b md:flex lg:hidden">
+      <div className="top-0 w-full flex justify-between py-6 px-4 mx-[12%] border-b lg:hidden">
         <div className="flex items-center gap-3">
           <div className="cursor-pointer" onClick={handleClick}>
             <img src={Menu} alt="menu" />
