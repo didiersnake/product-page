@@ -4,24 +4,24 @@ import Cart from "../images/icon-cart.svg";
 import Avatar from "../images/image-avatar.png";
 import Menu from "../images/icon-menu.svg";
 import Close from "../images/icon-close.svg";
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../features/cartSlice";
-import { count} from "../features/product/productSlice";
+import { count } from "../features/product/productSlice";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const cart = useSelector(count)
-  const dispatch = useDispatch()
+  const cart = useSelector(count);
+  const dispatch = useDispatch();
   const handleClick = () => {
     setNav((prev) => !prev);
   };
-  
+
   const handleCart = () => {
-    dispatch(setCart())
-  }
+    dispatch(setCart());
+  };
 
   return (
-      /* On large screens */
+    /* On large screens */
     <div>
       <div className=" justify-between items-center hidden py-6 border-b lg:flex">
         <div className="flex items-center justify-between w-[55%] ">
@@ -51,7 +51,7 @@ const Navbar = () => {
 
       {/* On smaller screens */}
 
-      <div className="top-0 w-full flex justify-between py-6 px-4 mx-[12%] border-b lg:hidden">
+      <div className="top-0 w-full flex justify-between py-3 px-4 border-b lg:hidden">
         <div className="flex items-center gap-3">
           <div className="cursor-pointer" onClick={handleClick}>
             <img src={Menu} alt="menu" />
@@ -59,7 +59,10 @@ const Navbar = () => {
           <img src={Logo} alt="logo" />
         </div>
         <div className="flex items-center gap-4">
-          <img className="cursor-pointer" onClick={handleCart} src={Cart} alt="cart" />
+          <div className="cursor-pointer" onClick={handleCart}>
+            <div className="top-0 right-0 z-10 text-sm">{cart}</div>
+            <img src={Cart} alt="cart" />
+          </div>
           <div className="w-6 h-6">
             <img src={Avatar} alt="avatar" />
           </div>
