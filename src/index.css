@@ -7,27 +7,3 @@
 *{
   font-family: "poppins";
 }
-ul{
-  list-style-type: none;
-}
-
-.slick-next
-{
-    right: 25px;
-}
-
-[dir='rtl'] .slick-next
-{
-    right: auto;
-    left: 25px;
-}
-
-.slick-prev
-{
-    left: 25px;
-}
-[dir='rtl'] .slick-prev
-{
-    right: 25px;
-    left: auto;
-}

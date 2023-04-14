@@ -8,6 +8,7 @@ import Cart from "../../images/icon-cart.svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./slider.css"
 
 const Product = () => {
   const [tab, setTab] = useState(1);
@@ -29,7 +30,7 @@ const Product = () => {
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     fade: true,
@@ -41,7 +42,7 @@ const Product = () => {
   const slickImagesProduct = allProduct.map((item) => {
     const img = item.images.map((i) => {
       return (
-        <div className="md:hidden">
+        <div className="md:hidden z-0">
           <img src={require(`../../images/${i}.jpg`)} alt="pic" />
         </div>
       );
@@ -108,7 +109,7 @@ const Product = () => {
   const productDescription = allProduct.map((item) => {
     return (
       <div className="flex flex-col md:pb-8 pb-4">
-        <div className="uppercase text-orange-600 text-xs font-semibold py-2">
+        <div className="uppercase text-orange-600 md:text-xs text-base font-semibold py-2">
           {item.company}
         </div>
         <div className="capitalize md:text-3xl text-2xl pb-5 font-semibold">
