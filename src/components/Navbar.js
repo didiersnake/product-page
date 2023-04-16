@@ -22,8 +22,8 @@ const Navbar = () => {
 
   return (
     /* On large screens */
-    <div>
-      <div className=" justify-between items-center hidden py-6 border-b lg:flex">
+    <>
+      <div className="sticky top-0 bg-white justify-between items-center hidden py-6 border-b lg:flex">
         <div className="flex items-center justify-between w-[55%] ">
           <div className="">
             <img src={Logo} alt="logo" />
@@ -51,7 +51,7 @@ const Navbar = () => {
 
       {/* On smaller screens */}
 
-      <div className="top-0 w-full flex justify-between py-3 px-4 border-b lg:hidden">
+      <div className="sticky top-0 bg-white w-full z-20 flex justify-between py-3 px-4 border-b lg:hidden">
         <div className="flex items-center gap-3">
           <div className="cursor-pointer" onClick={handleClick}>
             <img src={Menu} alt="menu" />
@@ -89,7 +89,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

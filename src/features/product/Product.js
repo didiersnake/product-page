@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { product } from "./productSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { addCount, subCount } from "./productSlice";
+import { addCount, subCount,addToCart } from "./productSlice";
 import Plus from "../../images/icon-plus.svg";
 import Minus from "../../images/icon-minus.svg";
 import Cart from "../../images/icon-cart.svg";
@@ -28,6 +28,10 @@ const Product = () => {
   const subProductCount = () => {
     dispatch(subCount({ id: id }));
   };
+  
+  const addCart = () => {
+    dispatch(addToCart({id : id})) 
+  }
 
   const settings = {
     dots: false,
@@ -80,7 +84,9 @@ const Product = () => {
             <div
               key={i}
               onClick={() => imgTabsSwitch(index)}
-              className={"w-14 h-14 border-2 rounded-md border-orange-400"}
+              className={
+                "w-14 h-14 border-2 rounded-md border-orange-400 hover:cursor-pointer"
+              }
             >
               <img
                 src={require(`../../images/${i}.jpg`)}
@@ -92,12 +98,12 @@ const Product = () => {
             <div
               key={i}
               onClick={() => imgTabsSwitch(index)}
-              className={"w-14 h-14 rounded-md"}
+              className={"w-14 h-14 rounded-md hover:cursor-pointer"}
             >
               <img
                 src={require(`../../images/${i}.jpg`)}
                 alt="img"
-                className={"rounded-md"}
+                className={"rounded-md hover:opacity-50"}
               />
             </div>
           );
@@ -153,7 +159,10 @@ const Product = () => {
                 <img src={Plus} alt="plus" />
               </button>
             </div>
-            <div className="flex p-2 justify-center gap-2 text-white w-full bg-orange-500 rounded-md cursor-pointer">
+            <div
+              className="flex p-2 justify-center gap-2 text-white w-full bg-orange-500 rounded-md cursor-pointer"
+              onClick={addCart}
+            >
               <img className="w-4 h-4" src={Cart} alt="cart" />
               <div className="text-sm">Add to cart</div>
             </div>
@@ -183,7 +192,10 @@ const Product = () => {
                 <img src={Plus} alt="plus" />
               </button>
             </div>
-            <div className="flex p-2 justify-center gap-2 text-white w-[65%] bg-orange-500 rounded-md cursor-pointer">
+            <div
+              className="flex p-2 justify-center gap-2 text-white w-[65%] bg-orange-500 rounded-md cursor-pointer"
+              onClick={addCart}
+            >
               <img className="w-4 h-4" src={Cart} alt="cart" />
               <div className="text-sm">Add to cart</div>
             </div>
