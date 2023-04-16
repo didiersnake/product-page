@@ -9,6 +9,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slider.css"
+import CartItems from "../CartItems";
 
 const Product = () => {
   const [tab, setTab] = useState(1);
@@ -30,7 +31,7 @@ const Product = () => {
   };
   
   const addCart = () => {
-    dispatch(addToCart({id : id})) 
+    dispatch(addToCart({id : id}))
   }
 
   const settings = {
@@ -125,7 +126,7 @@ const Product = () => {
         <div className="flex justify-between items-center">
           <div className="flex gap-5 items-center">
             <div className="font-semibold text-2xl md:text-xl">
-              {item.price}
+              {`$${item.price}.00`}
             </div>
             <div className="text-orange-400 rounded-md font-bold text-xs bg-orange-100 p-[4px]">
               {item.discount}

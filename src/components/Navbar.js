@@ -12,6 +12,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
   const cart = useSelector(count);
   const dispatch = useDispatch();
+  
   const handleClick = () => {
     setNav((prev) => !prev);
   };
@@ -40,8 +41,10 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-8 md:gap-4">
           <div className="cursor-pointer" onClick={handleCart}>
-            <div className="top-0 right-0 z-10 text-sm">{cart}</div>
             <img src={Cart} alt="cart" />
+          </div>
+          <div className="fixed top-8 right-[230px] text-xs text-white bg-orange-600 px-[6px] rounded-xl">
+            {cart}
           </div>
           <div className="w-12 h-12">
             <img src={Avatar} alt="avatar" />
@@ -60,8 +63,10 @@ const Navbar = () => {
         </div>
         <div className="flex items-center gap-4">
           <div className="cursor-pointer" onClick={handleCart}>
-            <div className="top-0 right-0 z-10 text-sm">{cart}</div>
             <img src={Cart} alt="cart" />
+          </div>
+          <div className="fixed top-2 right-12 text-xs text-white bg-orange-600 px-[4px] rounded-xl">
+            {cart}
           </div>
           <div className="w-6 h-6">
             <img src={Avatar} alt="avatar" />
