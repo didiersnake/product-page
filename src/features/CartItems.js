@@ -21,13 +21,13 @@ const CartItems = () => {
     const totalAmount = item.price * item.count;
       return (
         <>
-          <div className="flex py-2 gap-3 items-center">
+          <div className="flex py-2 gap-3 items-center ">
             <img
               className="w-8 h-8 rounded-md"
               src={require(`../images/${item.images[0]}.jpg`)}
               alt="img"
             />
-            <div className="text-sm">
+            <div className="md:text-sm">
               <p>{item.title}</p>
               <p>
                 {`${item.price} x ${item.count}`}{" "}
@@ -38,7 +38,7 @@ const CartItems = () => {
               <img className="w-3 h-3" src={Trash} alt="trash" />
             </button>
           </div>
-          <button className="bg-orange-600 text-white text-sm w-full rounded-sm p-2">
+          <button className="bg-orange-600 text-white md:text-sm w-full rounded-sm p-2">
             Checkout
           </button>
         </>
@@ -46,8 +46,8 @@ const CartItems = () => {
   });
   return (
     showCart && (
-      <div className="p-4 flex flex-col shadow-2xl fixed top-16 right-60 bg-white rounded">
-        <div className="font-bold border-b border-gray-300 text-sm p-2">
+      <div className="md:p-4 p-5 flex flex-col shadow-2xl fixed md:top-16 md:right-60 top-14 right-2 bg-white rounded ">
+        <div className="font-bold border-b border-gray-300 md:text-sm p-2">
           <p>Cart</p>
         </div>
         

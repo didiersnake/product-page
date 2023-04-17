@@ -78,7 +78,7 @@ const productSlice = createSlice({
       return state = {
         ...state,
         cartCount: 0,
-        cartItems: [...products],
+        cartItems: products
       };
     }
     
