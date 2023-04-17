@@ -1,31 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import Trash from "../images/icon-delete.svg";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { cartstate } from "./cartSlice";
+import { cartItems, removeCartItem, count } from "./product/productSlice";
 
-const CartItems = (image, name, count, price) => {
+const CartItems = () => {
   const showCart = useSelector(cartstate);
+  const allCartItems = useSelector(cartItems);
+  const cardCount = useSelector(count);
+  const cartId = allCartItems.map((item) => item.id);
+  // eslint-disable-next-line no-unused-vars
+  const [id, setId] = useState(...cartId);
+  const dispatch = useDispatch();
 
-  const totalAmount = price * count;
+  const handleRemove = () => {
+    dispatch(removeCartItem({ id: id }));
+  };
+
+  const cart = allCartItems.map((item) => {
+    const totalAmount = item.price * item.count;
+      return (
+        <>
+          <div className="flex py-2 gap-3 items-center">
+            <img
+              className="w-8 h-8 rounded-md"
+              src={require(`../images/${item.images[0]}.jpg`)}
+              alt="img"
+            />
+            <div className="text-sm">
+              <p>{item.title}</p>
+              <p>
+                {`${item.price} x ${item.count}`}{" "}
+                <strong>{` $${totalAmount}.00`}</strong>
+              </p>
+            </div>
+            <button onClick={handleRemove}>
+              <img className="w-3 h-3" src={Trash} alt="trash" />
+            </button>
+          </div>
+          <button className="bg-orange-600 text-white text-sm w-full rounded-sm p-2">
+            Checkout
+          </button>
+        </>
+      );
+  });
   return (
-    <div className="flex flex-col shadow-xl fixed top-12 right-60">
-      <div>
-        <p className="semibold border-b border-gray-400 text-sm">Cart</p>
-      </div>
-      <div className="p-2 flex gap-2">
-        <img className="w-8 h-8 rounded-md" src={image} alt="img" />
-        <div className="text-sm">
-          <p>{name}</p>
-          <p>
-            {`${price} x ${count}`} <strong>{` $${totalAmount}.00`}</strong>
-          </p>
+    showCart && (
+      <div className="p-4 flex flex-col shadow-2xl fixed top-16 right-60 bg-white rounded">
+        <div className="font-bold border-b border-gray-300 text-sm p-2">
+          <p>Cart</p>
         </div>
-        <img src={Trash} alt="trash" />
+        
+          {cardCount === 0 ?
+         <>
+          <div className="p-12 text-sm text-gray-500">Your cart is empty</div>
+          </> : 
+        cart }
       </div>
-      <button className="bg-orange-600 text-white text-sm w-full">
-        Checkout
-      </button>
-    </div>
+    )
   );
 };
 

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { product } from "./productSlice";
+import { addCartItem, cartItems, product } from "./productSlice";
 import { useSelector, useDispatch } from "react-redux";
-import { addCount, subCount,addToCart } from "./productSlice";
+import { addCount, subCount, addToCart } from "./productSlice";
 import Plus from "../../images/icon-plus.svg";
 import Minus from "../../images/icon-minus.svg";
 import Cart from "../../images/icon-cart.svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./slider.css"
-import CartItems from "../CartItems";
+import "./slider.css";
 
 const Product = () => {
   const [tab, setTab] = useState(1);
@@ -29,10 +28,11 @@ const Product = () => {
   const subProductCount = () => {
     dispatch(subCount({ id: id }));
   };
-  
+
   const addCart = () => {
-    dispatch(addToCart({id : id}))
-  }
+      dispatch(addCartItem({ id: id }));
+      dispatch(addToCart({ id: id }));
+  };
 
   const settings = {
     dots: false,
@@ -54,7 +54,7 @@ const Product = () => {
     });
     return img;
   });
-    
+
   //Display product images on larger screens
   const productImage = allProduct.map((item) => {
     return (
@@ -75,8 +75,8 @@ const Product = () => {
       </>
     );
   });
-    
-//images tabs on larger screens
+
+  //images tabs on larger screens
   const imageTabs = allProduct.map((item) => {
     return (
       <div className="w-[320px] h-auto flex justify-between">

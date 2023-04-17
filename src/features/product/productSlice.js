@@ -21,6 +21,7 @@ const initialState = {
       count: 0,
     },
   ],
+  cartItems: []
 };
 
 const productSlice = createSlice({
@@ -65,11 +66,28 @@ const productSlice = createSlice({
           {...item, count: 0}
         ]
       }
+    },
+    addCartItem(state, action) {
+      const { id } = action.payload;
+      const item = state.products.find((item) => item.id === id);
+      state.cartItems.push(item);
+    },
+    removeCartItem(state, action) {
+      const { id } = action.payload;
+      const products = state.cartItems.filter((item) => item.id !== id);
+      return state = {
+        ...state,
+        cartCount: 0,
+        cartItems: [...products],
+      };
     }
-  },
+    
+  }
 });
 
-export const { addCount, subCount, addToCart } = productSlice.actions;
+export const { addCount, subCount, addToCart, addCartItem, removeCartItem } = productSlice.actions;
 export const product = (state) => state.product.products;
-export const count = (state) => state.product.cartCount
+export const count = (state) => state.product.cartCount;
+export const cartItems = (state) => state.product.cartItems;
+
 export default productSlice.reducer;
