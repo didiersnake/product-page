@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addCartItem, cartItems, product } from "./productSlice";
+import { addCartItem, product } from "./productSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { addCount, subCount, addToCart } from "./productSlice";
 import Plus from "../../images/icon-plus.svg";
@@ -14,6 +14,7 @@ const Product = () => {
   const [tab, setTab] = useState(1);
   const allProduct = useSelector(product);
   const productId = allProduct.map((item) => item.id);
+  // eslint-disable-next-line no-unused-vars
   const [id, setId] = useState(...productId);
 
   const dispatch = useDispatch();
