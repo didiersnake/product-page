@@ -31,7 +31,7 @@ Users should be able to:
 ![](./desktop-preview.jpg)
 ![](./active-states-basket-filled.jpg)
 ![](./mobile-design.jpg)
-(./mobile-design-basket-filled.jpg.jpg)
+![](./mobile-design-basket-filled.jpg.jpg)
 
 ## My process
 
